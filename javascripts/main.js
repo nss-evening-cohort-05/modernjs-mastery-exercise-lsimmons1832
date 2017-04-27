@@ -1,5 +1,33 @@
 $(document).ready(function() {
 
+	$('body').on("click","nav", (e)=>{
+		//determine which button was clicked
+		//then call a new function based on id of click
+		let selected = e.target.id;
+		//console.log('event', e);
+		if (selected==='xmen') {
+			getXMen();
+		}else if(selected === 'avengers'){
+			getAvengers();
+		}else
+		getGuardians();
+	});
+
+	const getXMen = () =>{
+		//loop over myComics array and grab XMen
+		console.log("I called xmen");
+	};
+
+	const getAvengers = () =>{
+		//loop over myComics array and grab Avengers
+		console.log("I called avengers");
+	};
+
+	const getGuardians = () =>{
+		//loop over myComics array and grab Guardians
+		console.log("I called guardians");
+	};
+
   const loadCharacters = () => {
       return new Promise((resolve, reject) => {
         $.ajax("/db/characters.json")
@@ -24,9 +52,11 @@ $(document).ready(function() {
       });
   };
 
+const myComics = [];
+
 Promise.all([loadCharacters(), loadGenders(), loadTeams()])
 	.then((data) => {
-			myComics = data;
+			myComics.push(data);
 			console.log(myComics);
 			}).catch((errors) => {
 				alert(errors);
