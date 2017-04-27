@@ -2,6 +2,8 @@ $(document).ready(function() {
 	const myCharacters = [];
 	const myDetails = [];
 	let xmen = [];
+	let avengers = [];
+	let guardians = [];
 
 const outputContainer = $(".container");
 
@@ -22,19 +24,39 @@ const outputContainer = $(".container");
 
 	const getXMen = () =>{
 		//loop over characters array and grab XMen
-	
-
+		console.log("I called xmen");
+		for (let i = 0; i < myCharacters.length; i++) {
+			//myCharacters[i]
+			if(myCharacters[i].team_id === 0){
+				xmen.push(myCharacters[i]);
+			}
+		}
+		writeToDom(data);	
 	};
 // console.log("what's in myComicBook?", myComicBook);
 
 	const getAvengers = () =>{
 		//loop over characters array and grab Avengers
 		console.log("I called avengers");
+			for (let i = 0; i < myCharacters.length; i++) {
+			//myCharacters[i]
+			if(myCharacters[i].team_id === 1){
+				avengers.push(myCharacters[i]);
+			}
+		}
+		writeToDom(data);
 	};
 
 	const getGuardians = () =>{
 		//loop over characters array and grab Guardians
 		console.log("I called guardians");
+			for (let i = 0; i < myCharacters.length; i++) {
+			//myCharacters[i]
+			if(myCharacters[i].team_id === 2){
+				guardians.push(myCharacters[i]);
+			}
+		}
+		writeToDom(data);
 	};
 
   const loadCharacters = () => {
@@ -85,15 +107,16 @@ const outputContainer = $(".container");
     characters.forEach((character) => {
       character.matches = []; 
       myCharacters.push(character);
+      //console.log("myCharacters array after push", myCharacters);
     });
 
 
 Promise.all([loadGenders(), loadTeams()])
 	.then((data) => {
 		data.forEach((dataSet)=>{
-			// dataSet.forEach((detail) =>{
-			myDetails.push(dataSet);
-			// });
+			dataSet.forEach((detail) =>{
+			myDetails.push(detail);
+			 });
 		});
 		for(let i = 0; i < myCharacters.length; i++){
 			for (let j = 0; j < myDetails.length; j++) {
@@ -102,7 +125,7 @@ Promise.all([loadGenders(), loadTeams()])
 				}
 			}
 		}
-			console.log("this is the Array",myCharacters);
+			//console.log("this is the Array",myCharacters);
 			//writeToDom(myCharacters);
 			}).catch((errors) => {
 				alert(errors);
