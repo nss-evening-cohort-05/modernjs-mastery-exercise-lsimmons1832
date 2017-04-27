@@ -59,6 +59,11 @@ const outputContainer = $(".container");
 		writeToDom(data);
 	};
 
+	const writeToDom = (data)=>{
+		let outputString = "";
+
+	};
+
   const loadCharacters = () => {
       return new Promise((resolve, reject) => {
         $.ajax("/db/characters.json")
