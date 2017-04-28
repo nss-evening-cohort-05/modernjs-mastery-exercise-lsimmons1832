@@ -5,7 +5,6 @@ $(document).ready(function() {
 	let avengers = [];
 	let guardians = [];
 
-//const outputContainer = $(".container");
 
 
 
@@ -13,7 +12,6 @@ $(document).ready(function() {
 		//determine which button was clicked
 		//then call a new function based on id of click
 		let selected = e.target.id;
-		//console.log('event', e);
 		if (selected==='xmen') {
 			getXMen();
 		}else if(selected === 'avengers'){
@@ -26,11 +24,11 @@ $(document).ready(function() {
 		//loop over characters array and grab XMen
 		console.log("I called xmen");
 		for (let i = 0; i < myCharacters.length; i++) {
-			//myCharacters[i]
 			if(myCharacters[i].team_id === 0){
 				xmen.push(myCharacters[i]);
 			}
 		}
+		console.log('xmen array', xmen);
 		writeToDom(xmen);	
 	};
 // console.log("what's in myComicBook?", myComicBook);
@@ -39,7 +37,6 @@ $(document).ready(function() {
 		//loop over characters array and grab Avengers
 		console.log("I called avengers");
 			for (let i = 0; i < myCharacters.length; i++) {
-			//myCharacters[i]
 			if(myCharacters[i].team_id === 1){
 				avengers.push(myCharacters[i]);
 			}
@@ -51,7 +48,6 @@ $(document).ready(function() {
 		//loop over characters array and grab Guardians
 		console.log("I called guardians");
 			for (let i = 0; i < myCharacters.length; i++) {
-			//myCharacters[i]
 			if(myCharacters[i].team_id === 2){
 				guardians.push(myCharacters[i]);
 			}
@@ -61,8 +57,18 @@ $(document).ready(function() {
 
 	const writeToDom = (data)=>{
 		let outputString = "";
+		let counter = 0;
 		for(let i = 0; i < data.length; i++){
-			outputString += `<div>${data[i].name}</div>`
+			if(counter%3 === 0){
+				outputString += `<div class="row">`;
+			}
+			outputString += `<div class="col-xs-6 col-md-4"><h1>${data[i].name}</h1>`;
+			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive" alt="Responsive image">`;
+			outputString += `<p>${data[i].description}</p></section></div>`;
+			counter++;
+			if(counter%3 === 0){
+				outputString += `</div><div class="clearfix visible-xs-block"></div>`;
+			}
 		}
 		$(".container").html(outputString);
 	};
@@ -115,7 +121,6 @@ $(document).ready(function() {
     characters.forEach((character) => {
       character.matches = []; 
       myCharacters.push(character);
-      //console.log("myCharacters array after push", myCharacters);
     });
 
 
@@ -133,8 +138,6 @@ Promise.all([loadGenders(), loadTeams()])
 				}
 			}
 		}
-			//console.log("this is the Array",myCharacters);
-			//writeToDom(myCharacters);
 			}).catch((errors) => {
 				alert(errors);
 			console.log(errors);
