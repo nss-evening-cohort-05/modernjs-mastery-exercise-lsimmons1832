@@ -1,0 +1,24 @@
+body{
+	margin: auto 0;
+}
+.navbar-brand img{
+    max-height: 40px;
+    max-width: 60%; 
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0; 
+}
+
+.card{
+	border: 1px solid black;
+	height: 500px;
+}
+
+
+.female{
+	border: 2px solid #f441f4;
+}
+
+.male{
+	border: 2px solid #41b2f4;
+}

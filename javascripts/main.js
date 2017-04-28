@@ -59,19 +59,19 @@ $(document).ready(function() {
 		let outputString = "";
 		let counter = 0;
 		for(let i = 0; i < data.length; i++){
-			if(counter%3 === 0){
+			if(counter%4 === 0){
 				outputString += `<div class="row">`;
 			}
-			if(data[i].gender_id === 0){
-				outputString += `<div class="col-xs-6 col-md-4 female">`;
-			}else{
-				outputString += `<div class="col-xs-6 col-md-4 male">`;
-			}
+			outputString += `<div class="col-xs-6 col-sm-3 card">`;
 			outputString += `<h1>${data[i].name}</h1>`;
-			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive" alt="Responsive image">`;
+			if(data[i].gender_id === 0){
+			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive female" alt="Responsive image">`;
+			}else{
+			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive male" alt="Responsive image">`;
+			}	
 			outputString += `<p>${data[i].description}</p></section></div>`;
 			counter++;
-			if(counter%3 === 0){
+			if(counter%4 === 0){
 				outputString += `</div><div class="clearfix visible-xs-block"></div>`;
 			}
 
