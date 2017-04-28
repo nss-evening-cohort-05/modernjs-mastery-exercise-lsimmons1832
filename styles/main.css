@@ -5,18 +5,28 @@
     padding-top: 0;
     padding-bottom: 0; 
 }
+.btn{
+	color: white;
+	background-color: #518cca;
+}
+
+body{
+	background-color: tan;
+	margin: auto 0;
+}
 
 .card{
-	border: 1px solid black;
+	border: 1px solid white;
 	height: 500px;
 }
 
 h1{
-	color: #e23636;
+	color: black;
+	background-color: #f78f3f;
 }
 
 p{
-	color: #504a4a;
+	color: #e23636;
 }
 
 .female{
