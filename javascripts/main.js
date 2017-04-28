@@ -5,7 +5,7 @@ $(document).ready(function() {
 	let avengers = [];
 	let guardians = [];
 
-const outputContainer = $(".container");
+//const outputContainer = $(".container");
 
 
 
@@ -31,7 +31,7 @@ const outputContainer = $(".container");
 				xmen.push(myCharacters[i]);
 			}
 		}
-		writeToDom(data);	
+		writeToDom(xmen);	
 	};
 // console.log("what's in myComicBook?", myComicBook);
 
@@ -44,7 +44,7 @@ const outputContainer = $(".container");
 				avengers.push(myCharacters[i]);
 			}
 		}
-		writeToDom(data);
+		writeToDom(avengers);
 	};
 
 	const getGuardians = () =>{
@@ -56,12 +56,15 @@ const outputContainer = $(".container");
 				guardians.push(myCharacters[i]);
 			}
 		}
-		writeToDom(data);
+		writeToDom(guardians);
 	};
 
 	const writeToDom = (data)=>{
 		let outputString = "";
-
+		for(let i = 0; i < data.length; i++){
+			outputString += `<div>${data[i].name}</div>`
+		}
+		$(".container").html(outputString);
 	};
 
   const loadCharacters = () => {
