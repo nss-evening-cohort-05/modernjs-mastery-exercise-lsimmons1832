@@ -5,7 +5,9 @@ $(document).ready(function() {
 	let avengers = [];
 	let guardians = [];
 
-
+ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen">X-Men</button>
+			    <button type="submit" class="btn btn-default" id="avengers">The Avengers</button>
+			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`)
 
 
 	$('body').on("click","nav", (e)=>{
