@@ -11,22 +11,25 @@
 }
 
 body{
-	background-color: tan;
-	margin: auto 0;
+	background-color: #3D362D;
 }
 
 .card{
 	border: 1px solid white;
+	border-radius: 5%;
 	height: 500px;
 }
 
-h1{
+h2{
 	color: black;
 	background-color: #f78f3f;
+	padding: inherit;
+	text-align: center;
 }
 
 p{
 	color: #e23636;
+	padding: 2px;
 }
 
 .female{

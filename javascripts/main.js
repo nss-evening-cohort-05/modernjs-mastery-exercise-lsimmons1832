@@ -65,7 +65,7 @@ $(document).ready(function() {
 				outputString += `<div class="row">`;
 			}
 			outputString += `<div class="col-xs-6 col-sm-3 card">`;
-			outputString += `<h1>${data[i].name}</h1>`;
+			outputString += `<h2>${data[i].name}</h2>`;
 			if(data[i].gender_id === 0){
 			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive female" alt="Responsive image">`;
 			}else{
