@@ -62,14 +62,21 @@ $(document).ready(function() {
 			if(counter%3 === 0){
 				outputString += `<div class="row">`;
 			}
-			outputString += `<div class="col-xs-6 col-md-4"><h1>${data[i].name}</h1>`;
+			if(data[i].gender_id === 0){
+				outputString += `<div class="col-xs-6 col-md-4 female">`;
+			}else{
+				outputString += `<div class="col-xs-6 col-md-4 male">`;
+			}
+			outputString += `<h1>${data[i].name}</h1>`;
 			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive" alt="Responsive image">`;
 			outputString += `<p>${data[i].description}</p></section></div>`;
 			counter++;
 			if(counter%3 === 0){
 				outputString += `</div><div class="clearfix visible-xs-block"></div>`;
 			}
+
 		}
+
 		$(".container").html(outputString);
 	};
 
@@ -98,7 +105,7 @@ $(document).ready(function() {
   };
 
   const checkTeam = (characters, teams) => { 
-		const formAlliance = characters.team_id;
+	const formAlliance = characters.team_id;
     const isMatchNumber = teams.id; 
     if (isMatchNumber === -1){ 
       return false;
@@ -110,9 +117,9 @@ $(document).ready(function() {
   const checkGender = (characters, genders) =>{
   	const gender = characters.gender_id;
   	const gender_id = genders.id;
-  	let isMatch = true;
-  	if(gender && !gender_id){
-  		isMatch = false;
+  	let isMatch = false;
+  	if(gender && gender_id){
+  		isMatch = true;
   	}
   	return isMatch;
   };
