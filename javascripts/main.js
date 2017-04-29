@@ -1,18 +1,21 @@
-$(document).ready(function() {
+$(document).ready(() => {
 	const myCharacters = [];
 	const myDetails = [];
 	let xmen = [];
 	let avengers = [];
 	let guardians = [];
 
- $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen">X-Men</button>
+
+$( "body" ).addClass( "background" );
+$('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen">X-Men</button>
 			    <button type="submit" class="btn btn-default" id="avengers">The Avengers</button>
-			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`)
+			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`);
 
 
 	$('body').on("click","nav", (e)=>{
 		//determine which button was clicked
 		//then call a new function based on id of click
+		$( "body" ).removeClass( "background" );
 		let selected = e.target.id;
 		if (selected==='xmen') {
 			getXMen();
@@ -79,7 +82,7 @@ $(document).ready(function() {
 
 		}
 
-		$(".container").html(outputString);
+		$(".outputContainer").html(outputString);
 	};
 
   const loadCharacters = () => {
