@@ -27,20 +27,20 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
 
 	const getXMen = () =>{
 		//loop over characters array and grab XMen
-		console.log("I called xmen");
+		// console.log("I called xmen");
 		for (let i = 0; i < myCharacters.length; i++) {
 			if(myCharacters[i].team_id === 0){
 				xmen.push(myCharacters[i]);
 			}
 		}
-		console.log('xmen array', xmen);
+		// console.log('xmen array', xmen);
 		writeToDom(xmen);	
 	};
 // console.log("what's in myComicBook?", myComicBook);
 
 	const getAvengers = () =>{
 		//loop over characters array and grab Avengers
-		console.log("I called avengers");
+		// console.log("I called avengers");
 			for (let i = 0; i < myCharacters.length; i++) {
 			if(myCharacters[i].team_id === 1){
 				avengers.push(myCharacters[i]);
@@ -51,7 +51,7 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
 
 	const getGuardians = () =>{
 		//loop over characters array and grab Guardians
-		console.log("I called guardians");
+		// console.log("I called guardians");
 			for (let i = 0; i < myCharacters.length; i++) {
 			if(myCharacters[i].team_id === 2){
 				guardians.push(myCharacters[i]);
