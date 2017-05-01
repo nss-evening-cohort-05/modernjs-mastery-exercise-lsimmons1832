@@ -12,24 +12,38 @@
 
 body{
 	background-color: #3D362D;
+	
+}
+
+.outputContainer{
+	max-width: 80%;
 }
 
 .card{
 	border: 1px solid white;
-	border-radius: 5%;
+	border-radius: 2%;
 	height: 500px;
+	max-width: 315px;
+	margin: 3px;
+	padding: .05px;
 }
 
 h2{
 	color: black;
 	background-color: #f78f3f;
-	padding: inherit;
 	text-align: center;
+	overflow:hidden;
+	margin-top: 0;
+	border-radius: 4%;
+}
+
+.card img{
+	vertical-align:middle;
 }
 
 p{
 	color: #e23636;
-	padding: 2px;
+	padding: 1px;
 }
 
 .female{

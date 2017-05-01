@@ -79,7 +79,7 @@ $(document).ready(function() {
 
 		}
 
-		$(".container").html(outputString);
+		$(".outputContainer").html(outputString);
 	};
 
   const loadCharacters = () => {
