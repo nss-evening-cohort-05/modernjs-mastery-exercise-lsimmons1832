@@ -68,13 +68,14 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
 				outputString += `<div class="row">`;
 			}
 			outputString += `<div class="col-xs-6 col-sm-3 card">`;
-			outputString += `<h2>${data[i].name}</h2>`;
+			outputString += `<section><h2>${data[i].name}</h2>`;
 			if(data[i].gender_id === 0){
-			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive female" alt="Responsive image">`;
+			outputString += `<img src='${data[i].image}' class="img-circle img-responsive female-img" alt="Responsive image">`;
+			outputString += `<p class="female">${data[i].description}</p></section></div>`;
 			}else{
-			outputString += `<section><img src='${data[i].image}' class="img-circle img-responsive male" alt="Responsive image">`;
+			outputString += `<img src='${data[i].image}' class="img-circle img-responsive male-img" alt="Responsive image">`;
+			outputString += `<p class="male">${data[i].description}</p></section></div>`;
 			}	
-			outputString += `<p>${data[i].description}</p></section></div>`;
 			counter++;
 			if(counter%4 === 0){
 				outputString += `</div><div class="clearfix visible-xs-block"></div>`;
