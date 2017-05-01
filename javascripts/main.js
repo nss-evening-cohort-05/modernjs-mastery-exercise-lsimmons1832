@@ -1,18 +1,21 @@
-$(document).ready(function() {
+$(document).ready(() => {
 	const myCharacters = [];
 	const myDetails = [];
 	let xmen = [];
 	let avengers = [];
 	let guardians = [];
 
- $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen">X-Men</button>
+
+$( "body" ).addClass( "background" );
+$('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen">X-Men</button>
 			    <button type="submit" class="btn btn-default" id="avengers">The Avengers</button>
-			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`)
+			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`);
 
 
 	$('body').on("click","nav", (e)=>{
 		//determine which button was clicked
 		//then call a new function based on id of click
+		$( "body" ).removeClass( "background" );
 		let selected = e.target.id;
 		if (selected==='xmen') {
 			getXMen();
@@ -24,20 +27,20 @@ $(document).ready(function() {
 
 	const getXMen = () =>{
 		//loop over characters array and grab XMen
-		console.log("I called xmen");
+		// console.log("I called xmen");
 		for (let i = 0; i < myCharacters.length; i++) {
 			if(myCharacters[i].team_id === 0){
 				xmen.push(myCharacters[i]);
 			}
 		}
-		console.log('xmen array', xmen);
+		// console.log('xmen array', xmen);
 		writeToDom(xmen);	
 	};
 // console.log("what's in myComicBook?", myComicBook);
 
 	const getAvengers = () =>{
 		//loop over characters array and grab Avengers
-		console.log("I called avengers");
+		// console.log("I called avengers");
 			for (let i = 0; i < myCharacters.length; i++) {
 			if(myCharacters[i].team_id === 1){
 				avengers.push(myCharacters[i]);
@@ -48,7 +51,7 @@ $(document).ready(function() {
 
 	const getGuardians = () =>{
 		//loop over characters array and grab Guardians
-		console.log("I called guardians");
+		// console.log("I called guardians");
 			for (let i = 0; i < myCharacters.length; i++) {
 			if(myCharacters[i].team_id === 2){
 				guardians.push(myCharacters[i]);

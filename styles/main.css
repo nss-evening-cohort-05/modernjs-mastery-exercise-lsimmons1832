@@ -10,40 +10,44 @@
 	background-color: #518cca;
 }
 
-body{
-	background-color: #3D362D;
-	
+.background {
+  background-image:url(/images/marvel_logo.PNG);
+  background-repeat:no-repeat;
+  background-position: center 300px;
 }
 
-.outputContainer{
-	max-width: 80%;
+body{
+	background-color: #625a50;/*#675b4c;/*#3D362D;*/
+	/*filter: opacity(25%);*/
 }
+
 
 .card{
 	border: 1px solid white;
-	border-radius: 2%;
+	border-radius: 5%;
 	height: 500px;
-	max-width: 315px;
-	margin: 3px;
-	padding: .05px;
+	max-width: 400px;
+	margin: 5px;
+	display: block;
+}
+
+.card img{
+	margin: 0 auto;
 }
 
 h2{
 	color: black;
 	background-color: #f78f3f;
+	padding: inherit;
 	text-align: center;
-	overflow:hidden;
 	margin-top: 0;
-	border-radius: 4%;
-}
-
-.card img{
-	vertical-align:middle;
+	/*max-width: 100%;*/
+	width: 100%;
 }
 
 p{
 	color: #e23636;
-	padding: 1px;
+	padding: 2px;
 }
 
 .female{
