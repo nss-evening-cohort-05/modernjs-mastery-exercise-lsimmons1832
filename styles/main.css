@@ -1,0 +1,59 @@
+.navbar-brand img{
+    max-height: 40px;
+    max-width: 60%; 
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0; 
+}
+.btn{
+	color: white;
+	background-color: #518cca;
+}
+
+.background {
+  background-image:url(/images/marvel_logo.PNG);
+  background-repeat:no-repeat;
+  background-position: center 300px;
+}
+
+body{
+	background-color: #625a50;/*#675b4c;/*#3D362D;*/
+	/*filter: opacity(25%);*/
+}
+
+
+.card{
+	border: 1px solid white;
+	border-radius: 5%;
+	height: 500px;
+	max-width: 400px;
+	margin: 5px;
+	display: block;
+}
+
+.card img{
+	margin: 0 auto;
+}
+
+h2{
+	color: black;
+	background-color: #f78f3f;
+	padding: inherit;
+	text-align: center;
+	margin-top: 0;
+	/*max-width: 100%;*/
+	width: 100%;
+}
+
+p{
+	color: #e23636;
+	padding: 2px;
+}
+
+.female-img{
+	border: 2px solid #f441f4;
+}
+
+.male-img{
+	border: 2px solid #518cca;
+}

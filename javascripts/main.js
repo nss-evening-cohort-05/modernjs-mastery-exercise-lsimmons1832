@@ -1,19 +1,22 @@
-$(document).ready(function() {
+$(document).ready(() => {
 	const myCharacters = [];
 	const myDetails = [];
 	let xmen = [];
 	let avengers = [];
 	let guardians = [];
 
-const outputContainer = $(".container");
 
+$( "body" ).addClass( "background" );
+$('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen">X-Men</button>
+			    <button type="submit" class="btn btn-default" id="avengers">The Avengers</button>
+			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`);
 
 
 	$('body').on("click","nav", (e)=>{
 		//determine which button was clicked
 		//then call a new function based on id of click
+		$( "body" ).removeClass( "background" );
 		let selected = e.target.id;
-		//console.log('event', e);
 		if (selected==='xmen') {
 			getXMen();
 		}else if(selected === 'avengers'){
@@ -24,44 +27,63 @@ const outputContainer = $(".container");
 
 	const getXMen = () =>{
 		//loop over characters array and grab XMen
-		console.log("I called xmen");
+		// console.log("I called xmen");
 		for (let i = 0; i < myCharacters.length; i++) {
-			//myCharacters[i]
 			if(myCharacters[i].team_id === 0){
 				xmen.push(myCharacters[i]);
 			}
 		}
-		writeToDom(data);	
+		// console.log('xmen array', xmen);
+		writeToDom(xmen);	
 	};
 // console.log("what's in myComicBook?", myComicBook);
 
 	const getAvengers = () =>{
 		//loop over characters array and grab Avengers
-		console.log("I called avengers");
+		// console.log("I called avengers");
 			for (let i = 0; i < myCharacters.length; i++) {
-			//myCharacters[i]
 			if(myCharacters[i].team_id === 1){
 				avengers.push(myCharacters[i]);
 			}
 		}
-		writeToDom(data);
+		writeToDom(avengers);
 	};
 
 	const getGuardians = () =>{
 		//loop over characters array and grab Guardians
-		console.log("I called guardians");
+		// console.log("I called guardians");
 			for (let i = 0; i < myCharacters.length; i++) {
-			//myCharacters[i]
 			if(myCharacters[i].team_id === 2){
 				guardians.push(myCharacters[i]);
 			}
 		}
-		writeToDom(data);
+		writeToDom(guardians);
 	};
 
 	const writeToDom = (data)=>{
 		let outputString = "";
+		let counter = 0;
+		for(let i = 0; i < data.length; i++){
+			if(counter%4 === 0){
+				outputString += `<div class="row">`;
+			}
+			outputString += `<div class="col-xs-6 col-sm-3 card">`;
+			outputString += `<section><h2>${data[i].name}</h2>`;
+			if(data[i].gender_id === 0){
+			outputString += `<img src='${data[i].image}' class="img-circle img-responsive female-img" alt="Responsive image">`;
+			outputString += `<p class="female">${data[i].description}</p></section></div>`;
+			}else{
+			outputString += `<img src='${data[i].image}' class="img-circle img-responsive male-img" alt="Responsive image">`;
+			outputString += `<p class="male">${data[i].description}</p></section></div>`;
+			}	
+			counter++;
+			if(counter%4 === 0){
+				outputString += `</div><div class="clearfix visible-xs-block"></div>`;
+			}
 
+		}
+
+		$(".outputContainer").html(outputString);
 	};
 
   const loadCharacters = () => {
@@ -89,7 +111,7 @@ const outputContainer = $(".container");
   };
 
   const checkTeam = (characters, teams) => { 
-		const formAlliance = characters.team_id;
+	const formAlliance = characters.team_id;
     const isMatchNumber = teams.id; 
     if (isMatchNumber === -1){ 
       return false;
@@ -101,9 +123,9 @@ const outputContainer = $(".container");
   const checkGender = (characters, genders) =>{
   	const gender = characters.gender_id;
   	const gender_id = genders.id;
-  	let isMatch = true;
-  	if(gender && !gender_id){
-  		isMatch = false;
+  	let isMatch = false;
+  	if(gender && gender_id){
+  		isMatch = true;
   	}
   	return isMatch;
   };
@@ -112,7 +134,6 @@ const outputContainer = $(".container");
     characters.forEach((character) => {
       character.matches = []; 
       myCharacters.push(character);
-      //console.log("myCharacters array after push", myCharacters);
     });
 
 
@@ -130,8 +151,6 @@ Promise.all([loadGenders(), loadTeams()])
 				}
 			}
 		}
-			//console.log("this is the Array",myCharacters);
-			//writeToDom(myCharacters);
 			}).catch((errors) => {
 				alert(errors);
 			console.log(errors);
