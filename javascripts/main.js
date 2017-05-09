@@ -11,14 +11,12 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
 
 
 
-
+//need to work on rewriting the DOM using Panels & rows instead of the grid format
 	const writeToDom = (data, buttonId)=>{
 		let outputString = "";
-		let counter = 0;
+
 		for(let i = 0; i < data.length; i++){
-			if(counter%4 === 0){
-				outputString += `<div class="row">`;
-			}
+
 			outputString += `<div class="col-xs-6 col-sm-3 card">`;
 			outputString += `<section><h2>${data[i].name}</h2>`;
 			if(data[i].gender_id === 0){
@@ -28,11 +26,6 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
 			outputString += `<img src='${data[i].image}' class="img-circle img-responsive male-img" alt="Responsive image">`;
 			outputString += `<p class="male">${data[i].description}</p></section></div>`;
 			}	
-			counter++;
-			if(counter%4 === 0){
-				outputString += `</div><div class="clearfix visible-xs-block"></div>`;
-			}
-
 		}
 
 		$(".outputContainer").html(outputString);
