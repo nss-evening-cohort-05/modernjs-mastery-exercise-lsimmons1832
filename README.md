@@ -1,6 +1,6 @@
 # ModernJS Mastery Exercise
 
-##Project Requirements
+## Project Requirements
 [Project Specifications](https://github.com/nss-evening-cohort-05/modernjs-mastery-exercise-lsimmons1832/blob/master/instructions.md)
 	* Project should be free of grunt errors
 	* Utilize ES6 (let, const, fat arrows)
@@ -10,7 +10,7 @@
 		- Should have a button for each team in the teams.json file
 		- Should have a large Marvel logo in the middle of the page
 		
-##Expected Functionality
+## Expected Functionality
 	* The large Marvel logo should toggle off when buttons are clicked
 	* The click event should call a function called dataGetter that has a Promise.all
 	* The Promise.all should resolve 3 functions that get the data from the json files

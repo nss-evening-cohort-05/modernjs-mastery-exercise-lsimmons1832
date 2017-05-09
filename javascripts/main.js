@@ -1,9 +1,5 @@
 $(document).ready(() => {
-	const myCharacters = [];
-	const myDetails = [];
-	let xmen = [];
-	let avengers = [];
-	let guardians = [];
+
 
 
 $( "body" ).addClass( "background" );
@@ -12,55 +8,11 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
 			    <button type="submit" class="btn btn-default" id="gaurdians">Guardians of the Galaxy</button>`);
 
 
-	$('body').on("click","nav", (e)=>{
-		//determine which button was clicked
-		//then call a new function based on id of click
-		$( "body" ).removeClass( "background" );
-		let selected = e.target.id;
-		if (selected==='xmen') {
-			getXMen();
-		}else if(selected === 'avengers'){
-			getAvengers();
-		}else
-		getGuardians();
-	});
 
-	const getXMen = () =>{
-		//loop over characters array and grab XMen
-		// console.log("I called xmen");
-		for (let i = 0; i < myCharacters.length; i++) {
-			if(myCharacters[i].team_id === 0){
-				xmen.push(myCharacters[i]);
-			}
-		}
-		// console.log('xmen array', xmen);
-		writeToDom(xmen);	
-	};
-// console.log("what's in myComicBook?", myComicBook);
 
-	const getAvengers = () =>{
-		//loop over characters array and grab Avengers
-		// console.log("I called avengers");
-			for (let i = 0; i < myCharacters.length; i++) {
-			if(myCharacters[i].team_id === 1){
-				avengers.push(myCharacters[i]);
-			}
-		}
-		writeToDom(avengers);
-	};
 
-	const getGuardians = () =>{
-		//loop over characters array and grab Guardians
-		// console.log("I called guardians");
-			for (let i = 0; i < myCharacters.length; i++) {
-			if(myCharacters[i].team_id === 2){
-				guardians.push(myCharacters[i]);
-			}
-		}
-		writeToDom(guardians);
-	};
 
-	const writeToDom = (data)=>{
+	const writeToDom = (data, buttonId)=>{
 		let outputString = "";
 		let counter = 0;
 		for(let i = 0; i < data.length; i++){
@@ -110,54 +62,53 @@ $('.navbar-right').html(`<button type="submit" class="btn btn-default" id="xmen"
       });
   };
 
-  const checkTeam = (characters, teams) => { 
-	const formAlliance = characters.team_id;
-    const isMatchNumber = teams.id; 
-    if (isMatchNumber === -1){ 
-      return false;
-    } else {
-      return true;
-    }
-  };
 
-  const checkGender = (characters, genders) =>{
-  	const gender = characters.gender_id;
-  	const gender_id = genders.id;
-  	let isMatch = false;
-  	if(gender && gender_id){
-  		isMatch = true;
-  	}
-  	return isMatch;
-  };
-
-    loadCharacters().then((characters) => {
-    characters.forEach((character) => {
-      character.matches = []; 
-      myCharacters.push(character);
-    });
-
-
-Promise.all([loadGenders(), loadTeams()])
+const dataGetter = (buttonId) => {
+Promise.all([loadCharacters(), loadGenders(), loadTeams()])
 	.then((data) => {
-		data.forEach((dataSet)=>{
-			dataSet.forEach((detail) =>{
-			myDetails.push(detail);
-			 });
-		});
-		for(let i = 0; i < myCharacters.length; i++){
-			for (let j = 0; j < myDetails.length; j++) {
-				if(checkTeam(myCharacters[i], myDetails[j])&& checkGender(myCharacters[i], myDetails[j])){
-					myCharacters[i].matches.push(myDetails[j]);
+	let character = data[0];
+	let gender = data[1];
+	let teams = data[2];
+	
+		character.forEach((char)=>{
+			teams.forEach((teams) =>{
+			gender.forEach((genders)=>{
+				if(char.team_id === teams.id){
+					char.team_name = teams.name
 				}
-			}
-		}
-			}).catch((errors) => {
-				alert(errors);
+				if(char.gender_id === genders.id){
+					char.gender = genders.type;
+				}	
+				if(char.description === '' && char.gender === 'Female'){
+					char.description = "abcde fghij klmno pqrst uvwxy z"
+				}else if(char.description === '' && char.gender === 'Male'){
+					char.description = '1234567890';
+				}
+			   });
+			 });
+			writeToDom(character, buttonId);
+		   });
+		 }).catch((errors) => {
 			console.log(errors);
 		});
-	});
-	
+}
 
-
+  $("#xmen").click((event) => {
+	dataGetter($(event.currentTarget)[0].id);
+    console.log($(event.currentTarget));
+	$("body").removeClass("background");
+  });
+  
+   $("#avengers").click((event) => {
+	dataGetter($(event.currentTarget)[1].id);
+    console.log($(event.currentTarget));
+	$("body").removeClass("background");
+  });
+  
+    $("#gaurdians").click((event) => {
+	dataGetter($(event.currentTarget)[2].id);
+    console.log($(event.currentTarget));
+	$("body").removeClass("background");
+  });
 
 });
